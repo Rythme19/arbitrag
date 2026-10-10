@@ -1,0 +1,13 @@
+# Livrets et texte extrait : protégés par le droit d'auteur, à ne pas publier
+*.pdf
+data/originaux/
+data/raw/*
+data/processed/*
+!.gitkeep
+
+# Clés d'API
+.env
+
+__pycache__/
+.venv/
+.DS_Store
