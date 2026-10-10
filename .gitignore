@@ -8,6 +8,7 @@ data/processed/*
 # Clés d'API
 .env
 
+.claude/
 __pycache__/
 .venv/
 .DS_Store

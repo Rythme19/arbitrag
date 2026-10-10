@@ -20,6 +20,20 @@ d'auteur. Chacun dépose les siens dans `data/raw/`, puis lance :
 python3 src/extract.py
 ```
 
+Pour lancer l'interface de discussion :
+
+```bash
+streamlit run app.py
+```
+
+Pour la clé d'API du LLM (Groq) : copier `.env.example` sous le nom `.env` et y
+coller la clé. Ce fichier n'est jamais envoyé sur GitHub. Ne jamais coller la
+clé dans `.env.example`, qui, lui, est envoyé.
+
+Dans l'interface, la réponse rédigée par le LLM est désactivée par défaut : sans
+elle, l'arbitre montre seulement les passages retrouvés et ne consomme aucun
+appel. Une fois activée, chaque nouvelle question coûte un appel.
+
 ## Structure
 
 ```
@@ -30,7 +44,12 @@ arbitrag/
 │   └── processed/    texte découpé, au format parquet
 ├── eval/
 │   └── questions.csv base de tests : question, réponse et source attendues
-├── src/              code : extraction, RAG, évaluation
+├── app.py            interface de discussion (Streamlit)
+├── src/
+│   ├── extract.py    livrets → pages.parquet
+│   ├── ocr.swift     reconnaissance de texte pour les scans (macOS)
+│   ├── search.py     découpage en passages et recherche
+│   └── llm.py        réponse rédigée par le LLM
 ├── results/          scores de chaque version du pipeline
 ├── JOURNAL.md        rapport d'avancement : ce qui a été testé, ce qui a raté
 └── README.md
